@@ -1,0 +1,22 @@
+body {
+    font-family: system-ui, sans-serif;
+    background-color: beige;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  div {
+    background-color: darkslategrey;
+    /* This makes the width of the div the width required by its content! */
+    width: fit-content;
+    padding: 8px;
+  }
+  
+  button {
+    margin: 8px;
+  }
+  
