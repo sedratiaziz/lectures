@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <style>
+        /*2. internal styling*/
+
+        body {
+            /* must delcare the variables in parent elements, if it was in a child element ..follow_in_h1 */
+            --brand-color: blue;
+        }
+
+        h1 {
+            /* follow_in_h1.. if we use the variable here we CAN'T use it in the body */
+            color: var(--brand-color);
+        }
+    </style>
+</head>
+
+<body>
+    <!--
+
+
+        **NOTES**
+       
+        
+        css goes from to bottom, example below:
+         - this code runs 
+         - but this code overrides the code above 
+
+
+
+
+        There is 3 types of styling in CSS:
+
+            1.inline most priority selector
+            2.internal
+            3.external
+        
+        -->
+
+    <h1 class="main-header">Intro to CSS</h1>
+    <h1 class="main-header">Second h1</h1>
+    <p id="about">More About CSS</p>
+    <div>This is a DIV</div>
+    <div class="important">This is another DIV</div>
+    <div class="important super-cool">
+        <p>This is a paragraph inside of the third DIV</p>
+    </div>
+    <a href="https://github.com">Visit GitHub</a>
+
+    <div id="comments">
+        <h2>Comments</h2>
+        <ul>
+            <li>Comment One</li>
+            <li class="super-cool">Comment Two</li>
+        </ul>
+        <button>This button does nothing</button>
+    </div>
+
+    <footer>Here's a footer</footer>
+</body>
+
+</html>

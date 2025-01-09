@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit your fruit!</h1>
+    <p>Current Fruit Name: <%=foundFruit.name%></p>
+    <p>Current Fruit isReadyToEat: <%=foundFruit.isReadyToEat%></p>
+
+    <form action="/fruits/<%=foundFruit._id%>?_method=PUT" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" value="<%=foundFruit.name%>" name="name" id="name">
+
+        <label for="isReadyToEat">Is it ready to eat?</label>
+        <input  type="checkbox" name="isReadyToEat" id="isReadyToEat" <% if(foundFruit.isReadyToEat){%>checked<% } %>>
+
+        <button>Edit Fruit</button>
+    </form>
+</body>
+</html>

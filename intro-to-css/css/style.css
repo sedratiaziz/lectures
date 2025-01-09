@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    background-color: lightgray;
+}
+
+ul{
+    margin: 0;
+}
+
+div {
+    color: blue;
+}
+
+.main-header{
+    color: blue;
+    background-color: green;  
+    border: solid 3px;  
+    padding: 10px;
+    border-color: red white blue;
+}
+
+h2 {
+    font-family: Arial, sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+}

@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+/* a must have */
+/* separates border from height and width */
+*{
+    box-sizing: border-box;
+}
+
+
+/* check for exact match
+a[href = 'https://google.com']{
+    background-color: green;
+} */
+
+/* all a elements with .com*/
+/* a[href *= '.com']{
+    background-color: green;
+} */
+
+/* all a elements which ends with .com*/
+/* a[href $= '.com']{
+    background-color: green;
+} */
+
+
+
+
+body {
+    /* default font for each system, for windows its segoue  */
+    /* font-family: system-ui, sans-serif; */
+
+background-image: url('./angryCat.jpg');
+    font-family: "Montserrat", sans-serif;
+}
+  
+  h1 {
+    text-align: center;
+  }
+  
+input:disabled {
+  border-color: red;
+}
+
+
+li:nth-child(3) {
+  color: blue;
+}
+
+
+
+  #about {
+    width: 150px;
+    height: 150px;
+    padding: 20px;
+    border: solid black 1px;
+  }
+
+
+
+
+  .super-cool > p {
+    background-color: plum;
+  }
+
+.imgContainer {
+  width: 350px;
+}
+
+  img {
+    height: 200px;
+    width: 100%;
+  }

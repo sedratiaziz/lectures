@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/fruits/new">create new fruit</a>
+    <h1>All Fruits</h1>
+
+    <ul>
+        <% allFruits.forEach((oneFruit)=>{%>
+            <li><a href="/fruits/<%= oneFruit._id%>"><%=oneFruit.name%></a></li>
+        <%})%>
+    </ul>
+   
+</body>
+</html>
