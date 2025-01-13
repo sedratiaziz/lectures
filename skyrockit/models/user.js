@@ -1,12 +1,9 @@
-const { application } = require('express');
 const mongoose = require('mongoose');
 
-
-// CREATING AN EMBEDDED SCHEMA:
 const applicationSchema = new mongoose.Schema({
-  company: {
-    type: String,
-    required: true,
+  company:{
+    type:String,
+    required:true
   },
   title: {
     type: String,
@@ -18,15 +15,15 @@ const applicationSchema = new mongoose.Schema({
   postingLink: {
     type: String,
   },
-  status: {
-    type: String,
-    // enum means that the value must be one of these values. For example: days of the week
+  status:{
+    type:String,
     enum: ['interested', 'applied', 'interviewing', 'rejected', 'accepted'],
-  },
+
+  }
+
 })
 
-
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -35,14 +32,8 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  // one-to-one:     application:  applicationSchema 
-  // one-to-many:    application: [applicationSchema] 
-  application: [applicationSchema]
+  applications: [applicationSchema]
 });
-
-
-
-
 
 const User = mongoose.model('User', userSchema);
 

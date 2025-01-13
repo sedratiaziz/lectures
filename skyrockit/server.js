@@ -7,13 +7,12 @@ const methodOverride = require('method-override');
 const morgan = require('morgan');
 const session = require('express-session');
 
-const isSignedIn = require('./middleware/is-signed-in.js');
-const passUserToView = require('./middleware/pass-user-to-view.js');
+const isSignedIn = require("./middleware/is-signed-in.js")
+
+const passUserToView = require('./middleware/pass-user-to-view.js')
 
 const applicationsController = require('./controllers/applications.js');
 
-// // styling
-// const path = require('path');
 
 const authController = require('./controllers/auth.js');
 
@@ -28,11 +27,6 @@ mongoose.connection.on('connected', () => {
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 // app.use(morgan('dev'));
-
-// // styling
-// app.use(express.static(path.join(__dirname, 'public')));
-// // styling
-
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -41,8 +35,13 @@ app.use(
   })
 );
 
-
 app.use(passUserToView); // use new passUserToView middleware here
+
+// middleware/is-signed-in.js
+
+
+
+
 
 
 app.get('/', (req, res) => {
@@ -57,15 +56,14 @@ app.get('/', (req, res) => {
 });
 
 
-
 app.use('/auth', authController);
+
 app.use(isSignedIn)
 
-// server.js
+app.use("/users/:userId/applications",applicationsController)
 
-app.use('/auth', authController);
-app.use(isSignedIn);
-app.use('/users/:userId/applications', applicationsController); 
+
+
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
