@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This listing is in <%=listing.city%></h1>
+
+    <h2>Details</h2>
+
+    <p>House size: <%=listing.size%></p>
+    <p>Price: $<%=listing.price%></p>
+    <p>Street Address: <%=listing.streetAddress%></p>
+    <h2>Owner</h2>
+    <% if (listing.owner._id.equals(user._id)) { %>
+      <p>You own this!</p>
+    <% } else { %>
+      <p>You don't own this, <%= listing.owner.username %> does!</p>
+    <% } %>
+
+    <form action="/listings/<%=listing._id%>/favorited-by/<%=user._id%>" method="POST">
+        <button>Favorite this listing</button>
+    </form>
+</body>
+</html>

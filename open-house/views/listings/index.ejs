@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Listings</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs')%>
+    <%=listings[0].owner.username%>
+    <h1>Here are all the Listings</h1>
+    <a href="/listings/new">Add a New Listing</a>
+
+    <ul>
+        <% listings.forEach((listing) => { %>
+        <li>
+            A listing in <%=listing.city%> and created by <%=listing.owner.username%>
+            <a href="/listings/<%=listing._id%>">Show more information</a>
+        </li>
+        <% }) %>
+      </ul>
+</body>
+</html>
