@@ -1,72 +1,65 @@
-const express = require("express")
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-const User = require('../models/user')
+const User = require("../models/user");
 
 // ALl routes for application
 
 // controllers/applications.js
 
-router.get('/', async (req, res) => {
-    try {
-      const currentUser = await User.findById(req.session.user._id)
+router.get("/", async (req, res) => {
+  try {
+    const currentUser = await User.findById(req.session.user._id);
 
-      console.log(currentUser.applications)
-      res.render('applications/index.ejs',{applications:currentUser.applications});
-    } catch (error) {
-      console.log(error);
-      res.redirect('/');
-    }
-  });
-  
-
-
-router.get("/new", async(req,res)=>{
-    res.render("applications/new.ejs")
-})
-
-router.post("/",async(req,res)=>{
-
-    try{
-        // const currentUser = await User.findByIdAndUpdate(req.session.user._id, {$push:{applications:req.body}})
-
-        const currentUser = await User.findById(req.session.user._id);
-
-        currentUser.applications.push(req.body)
-
-        await currentUser.save()
-
-        res.redirect(`/users/${currentUser._id}/applications`)
-         
-
-        console.log(currentUser)
-    
-    }catch(err){
-        console.log(err);
-        res.redirect('/');     
-    }
-})
-
-router.get('/:applicationId',async(req,res)=>{
-  try{
-
-    const currentUser = await User.findById(req.session.user._id)
-
-    console.log(currentUser)
-
-    const application = currentUser.applications.id(req.params.applicationId)
-
-    console.log(application)
-
-    res.render("applications/show.ejs",{application:application})
-  
-  }catch(error){
-    console.log(error)
-    res.redirect("/")
+    console.log(currentUser.applications);
+    res.render("applications/index.ejs", {
+      applications: currentUser.applications,
+    });
+  } catch (error) {
+    console.log(error);
+    res.redirect("/");
   }
-})
+});
 
+router.get("/new", async (req, res) => {
+  res.render("applications/new.ejs");
+});
 
+router.post("/", async (req, res) => {
+  try {
+    // const currentUser = await User.findByIdAndUpdate(req.session.user._id, {$push:{applications:req.body}})
+
+    const currentUser = await User.findById(req.session.user._id);
+
+    currentUser.applications.push(req.body);
+
+    await currentUser.save();
+
+    res.redirect(`/users/${currentUser._id}/applications`);
+
+    console.log(currentUser);
+  } catch (err) {
+    console.log(err);
+    res.redirect("/");
+  }
+});
+
+router.get("/:applicationId", async (req, res) => {
+  try {
+    const currentUser = await User.findById(req.session.user._id);
+
+    console.log(currentUser);
+
+    const application = currentUser.applications.id(req.params.applicationId);
+
+    console.log(application);
+
+    res.render("applications/show.ejs", { application: application });
+  } catch (error) {
+    console.log(error);
+    res.redirect("/");
+  }
+});
 
 router.delete("/:applicationId", async (req, res) => {
   try {
@@ -82,28 +75,26 @@ router.delete("/:applicationId", async (req, res) => {
   } catch (error) {
     // If any errors, log them and redirect back home
     console.log(error);
-    res.redirect('/');
+    res.redirect("/");
   }
-})
+});
 
-
-
-router.get('/:applicationId/edit', async (req, res) => {
+router.get("/:applicationId/edit", async (req, res) => {
   try {
     const currentUser = await User.findById(req.session.user._id);
     const application = currentUser.applications.id(req.params.applicationId);
-    res.render('applications/edit.ejs', {
+    res.render("applications/edit.ejs", {
       application: application,
     });
   } catch (error) {
     console.log(error);
-    res.redirect('/');
+    res.redirect("/");
   }
 });
 
 // controllers/applications.js`
 
-router.put('/:applicationId', async (req, res) => {
+router.put("/:applicationId", async (req, res) => {
   try {
     // Find the user from req.session
     const currentUser = await User.findById(req.session.user._id);
@@ -121,11 +112,8 @@ router.put('/:applicationId', async (req, res) => {
     );
   } catch (error) {
     console.log(error);
-    res.redirect('/');
+    res.redirect("/");
   }
 });
 
-
-
-
-module.exports = router
+module.exports = router;
