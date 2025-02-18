@@ -74,7 +74,7 @@ function App() {
 
       function helloClass(){
         alert("Hello class")
-      }
+      } 
 
       function deleteBook(id){
         
